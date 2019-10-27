@@ -19,7 +19,7 @@ data.players.map(player => {
 
 // Get player data from id
 const getPlayer = (id = 4916) => {
-  for(var i = 0; i < data.players.length; i++) {
+  for(let i = 0; i < data.players.length; i++) {
     if(data.players[i].player.id == id) {
       return data.players[i];
     }
