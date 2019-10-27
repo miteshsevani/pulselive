@@ -28,26 +28,26 @@ const getPlayer = (id = 4916) => {
   }
 
   // Get last word of position
-  const getPosition = (positionFull) => {
+  function getPosition(positionFull) {
     const splitPos = positionFull.split(" ");
     return splitPos[splitPos.length - 1];
   }
 
   // Get goals per match
-  const goalsPerMatch = (gpm) => {
+  function  goalsPerMatch(gpm) {
     // Appearances divide by goals and round to 2 decimal places
     return (gpm[0]/gpm[1]).toFixed(2);
   }
 
   // Get passes per minute
-  const passesPerMinute = function(ppm) {
+  function passesPerMinute(ppm) {
     // Add passes and divide by the number of minutes played, round to 2 decimal places
     return ((ppm.fwd_pass + ppm.backward_pass) / ppm.mins_played).toFixed(2);
   }
 
   // A closure function making it private
   // Display player info and stats
-  const printPlayer = () => {
+  function printPlayer() {
     const playerImage = `img/p${playerInfo.player.id}.png`;
     const playerBadge = playerInfo.player.currentTeam.shortName.toLowerCase().replace(' ','');
     const playerName = `${playerInfo.player.name.first} ${playerInfo.player.name.last}`;
