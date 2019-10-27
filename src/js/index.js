@@ -18,7 +18,7 @@ data.players.map(player => {
 })
 
 // Get player data from id
-function getPlayer(id = 4916) {
+const getPlayer = (id = 4916) => {
   for(var i = 0; i < data.players.length; i++) {
     if(data.players[i].player.id == id) {
       return data.players[i];
@@ -27,25 +27,25 @@ function getPlayer(id = 4916) {
 }
 
 // Get last word of position
-function getPosition(positionFull) {
+const getPosition = (positionFull) => {
   const splitPos = positionFull.split(" ");
   return splitPos[splitPos.length - 1];
 }
 
 // Get goals per match
-function goalsPerMatch(gpm) {
+const goalsPerMatch = (gpm) => {
   // Appearances divide by goals and round to 2 decimal places
   return (gpm[0]/gpm[1]).toFixed(2);
 }
 
 // Get passes per minute
-function passesPerMinute(ppm) {
+const passesPerMinute = function(ppm) {
   // Add passes and divide by the number of minutes played, round to 2 decimal places
   return ((ppm.fwd_pass + ppm.backward_pass) / ppm.mins_played).toFixed(2);
 }
 
 // Display player info and stats
-function printPlayer(playerInfo) {
+const printPlayer = (playerInfo) => {
   const playerImage = `img/p${playerInfo.player.id}.png`;
   const playerBadge = playerInfo.player.currentTeam.shortName.toLowerCase().replace(' ','');
   const playerName = `${playerInfo.player.name.first} ${playerInfo.player.name.last}`;
@@ -74,12 +74,12 @@ function printPlayer(playerInfo) {
       elementID.getElementsByClassName('value')[0].innerHTML = statValue;
     }
 
-    // Goals per game array with goals and appearances
+    // Append to goals per game array with goals and appearances
     if(statName === 'goals' || statName === 'appearances') {
       gpm.push(statValue);
     }
 
-    // Passes per minute object with stat name and value as key value pairs
+    // Append to passes per minute object with stat name and value as key value pairs
     if(statName === 'fwd_pass' || statName === 'backward_pass' || statName === 'mins_played') {
       ppm[statName] = statValue;
     }
@@ -89,7 +89,6 @@ function printPlayer(playerInfo) {
   document.getElementById('gpm').getElementsByClassName('value')[0].innerHTML = goalsPerMatch(gpm);
   document.getElementById('ppm').getElementsByClassName('value')[0].innerHTML = passesPerMinute(ppm);
 }
-
 
 // Get player on selection
 document.getElementById('playerID').addEventListener('change', function() {
