@@ -39,9 +39,9 @@ function goalsPerMatch(gpm) {
 }
 
 // Get passes per minute
-function passesPerMinute(ppm) {  
+function passesPerMinute(ppm) {
   // Add passes and divide by the number of minutes played, round to 2 decimal places
-  return ((ppm.fwd_pass + ppm.backward_pass) / ppm.mins_played).toFixed(2)
+  return ((ppm.fwd_pass + ppm.backward_pass) / ppm.mins_played).toFixed(2);
 }
 
 // Display player info and stats
@@ -50,7 +50,7 @@ function printPlayer(playerInfo) {
   const playerBadge = playerInfo.player.currentTeam.shortName.toLowerCase().replace(' ','');
   const playerName = `${playerInfo.player.name.first} ${playerInfo.player.name.last}`;
   const playerPosition = getPosition(playerInfo.player.info.positionInfo);
-    
+
   let statName;
   let statValue;
   let elementID;
@@ -59,10 +59,10 @@ function printPlayer(playerInfo) {
 
   document.getElementById('player__img').src = playerImage;
   document.getElementById('player__img').alt = playerName;
-  document.getElementById('teamlogo').className = playerBadge;  
+  document.getElementById('player__badge').className = playerBadge;
   document.getElementById('player__name').innerHTML = playerName;
   document.getElementById('player__position').innerHTML = playerPosition;
-  
+
   playerInfo.stats.map(stat => {
     statName = Object.values(stat)[0]; // Get stat name e.g. goals, appearances etc.
     statValue = Object.values(stat)[1]; // Get value of stat
@@ -76,13 +76,13 @@ function printPlayer(playerInfo) {
 
     // Goals per game array with goals and appearances
     if(statName === 'goals' || statName === 'appearances') {
-      gpm.push(statValue)      
-    }        
+      gpm.push(statValue);
+    }
 
     // Passes per minute object with stat name and value as key value pairs
     if(statName === 'fwd_pass' || statName === 'backward_pass' || statName === 'mins_played') {
-      ppm[statName] = statValue
-    }        
+      ppm[statName] = statValue;
+    }
   })
 
   // Display Goals per match and passes per minute
@@ -93,8 +93,8 @@ function printPlayer(playerInfo) {
 
 // Get player on selection
 document.getElementById('playerID').addEventListener('change', function() {
-  printPlayer(getPlayer(this.value))
+  printPlayer(getPlayer(this.value));
 })
 
 // Load default player
-printPlayer(getPlayer())
+printPlayer(getPlayer());
