@@ -5,8 +5,9 @@ NOTES:
 Code: https://github.com/miteshsevani/pulselive
 App Demo: http://www.miteshsevani.com/pulselive/
 
-1) Webpack was use as my module bundler and process sass
+1) Webpack was used as my module bundler and process sass
 2) I do not have photoshop so i downloaded a couple of my own images e.g. card background and down arrow
+3) Code has been run through code validators and accessibility checker
 
 
 To run the app locally;
