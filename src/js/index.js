@@ -27,6 +27,11 @@ const getPlayer = (id = 4916) => {
     }
   }
 
+  // Return element by id
+  function getElement(element) {
+    return document.getElementById(element);
+  }
+
   // Get last word of position
   function getPosition(positionFull) {
     const splitPos = positionFull.split(" ");
@@ -59,16 +64,16 @@ const getPlayer = (id = 4916) => {
     let gpm = [];
     let ppm = {};
 
-    document.getElementById('player__img').src = playerImage;
-    document.getElementById('player__img').alt = playerName;
-    document.getElementById('player__badge').className = playerBadge;
-    document.getElementById('player__name').innerHTML = playerName;
-    document.getElementById('player__position').innerHTML = playerPosition;
+    getElement('player__img').src = playerImage;
+    getElement('player__img').alt = playerName;
+    getElement('player__badge').className = playerBadge;
+    getElement('player__name').innerHTML = playerName;
+    getElement('player__position').innerHTML = playerPosition;
 
     playerInfo.stats.map(stat => {
       statName = Object.values(stat)[0]; // Get stat name e.g. goals, appearances etc.
       statValue = Object.values(stat)[1]; // Get value of stat
-      elementID = document.getElementById(statName); // Get element with state name as id
+      elementID = getElement(statName); // Get element with state name as id
 
       // Check if element exists and if it matches the stat name
       if(elementID && elementID.id === statName) {
@@ -88,8 +93,8 @@ const getPlayer = (id = 4916) => {
     })
 
     // Display Goals per match and passes per minute
-    document.getElementById('gpm').getElementsByClassName('value')[0].innerHTML = goalsPerMatch(gpm);
-    document.getElementById('ppm').getElementsByClassName('value')[0].innerHTML = passesPerMinute(ppm);
+    getElement('gpm').getElementsByClassName('value')[0].innerHTML = goalsPerMatch(gpm);
+    getElement('ppm').getElementsByClassName('value')[0].innerHTML = passesPerMinute(ppm);
   }
 
   return printPlayer();  
