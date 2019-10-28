@@ -45,7 +45,7 @@ const getPlayer = (id = 4916) => {
     return ((ppm.fwd_pass + ppm.backward_pass) / ppm.mins_played).toFixed(2);
   }
 
-  // A closure function making it private
+  // A private function / keep within it's lexical environment
   // Display player info and stats
   function printPlayer() {
     const playerImage = `img/p${playerInfo.player.id}.png`;
