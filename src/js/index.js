@@ -27,11 +27,6 @@ const getPlayer = (id = 4916) => {
     }
   }
 
-  // Return element by id
-  function getElement(element) {
-    return document.getElementById(element);
-  }
-
   // Get last word of position
   function getPosition(positionFull) {
     const splitPos = positionFull.split(" ");
@@ -52,7 +47,14 @@ const getPlayer = (id = 4916) => {
 
   // A private function / keep within it's lexical environment
   // Display player info and stats
-  function printPlayer() {
+  function printPlayer() {    
+    const elementImage = document.getElementById('player__img');
+    const elementBadge = document.getElementById('player__badge');
+    const elementName = document.getElementById('player__name');
+    const elementPosition = document.getElementById('player__position');
+    const elementGPM = document.getElementById('gpm');
+    const elementPPM = document.getElementById('ppm');
+
     const playerImage = `img/p${playerInfo.player.id}.png`;
     const playerBadge = playerInfo.player.currentTeam.shortName.toLowerCase().replace(' ','');
     const playerName = `${playerInfo.player.name.first} ${playerInfo.player.name.last}`;
@@ -64,16 +66,16 @@ const getPlayer = (id = 4916) => {
     let gpm = [];
     let ppm = {};
 
-    getElement('player__img').src = playerImage;
-    getElement('player__img').alt = playerName;
-    getElement('player__badge').className = playerBadge;
-    getElement('player__name').innerHTML = playerName;
-    getElement('player__position').innerHTML = playerPosition;
+    elementImage.src = playerImage;
+    elementImage.alt = playerName;
+    elementBadge.className = playerBadge;
+    elementName.innerHTML = playerName;
+    elementPosition.innerHTML = playerPosition;
 
     playerInfo.stats.map(stat => {
       statName = Object.values(stat)[0]; // Get stat name e.g. goals, appearances etc.
       statValue = Object.values(stat)[1]; // Get value of stat
-      elementID = getElement(statName); // Get element with state name as id
+      elementID = document.getElementById(statName); // Get element with state name as id
 
       // Check if element exists and if it matches the stat name
       if(elementID && elementID.id === statName) {
@@ -93,8 +95,8 @@ const getPlayer = (id = 4916) => {
     })
 
     // Display Goals per match and passes per minute
-    getElement('gpm').getElementsByClassName('value')[0].innerHTML = goalsPerMatch(gpm);
-    getElement('ppm').getElementsByClassName('value')[0].innerHTML = passesPerMinute(ppm);
+    elementGPM.getElementsByClassName('value')[0].innerHTML = goalsPerMatch(gpm);
+    elementPPM.getElementsByClassName('value')[0].innerHTML = passesPerMinute(ppm);
   }
 
   return printPlayer();  

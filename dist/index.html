@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pulselive - Player Stats</title>
+<link href="style.7f4ed76f14d2a33089df.css?33014b8d1a2cf75b43eb" rel="stylesheet"></head>
+<body>  
+  <div class="container">
+    <!-- Player selection -->    
+    <select id="playerID" aria-label="Select Player">
+      <!-- Will be populated dynamically -->
+      <option>Select player...</option>      
+    </select>
+    <!-- Player display -->
+    <section class="card">
+      <!-- Player image and badge -->
+      <section class="card__top">
+        <img id="player__img" src="#" alt="Player Image">
+        <div id="player__badge" class="mancity"></div>
+      </section>
+      <!-- Player info and stats -->
+      <section class="card__bottom">            
+        <div class="player__info">
+          <div id="player__name"></div>
+          <div id="player__position"></div>        
+        </div>
+        <div class="player__stats">
+          <div id="appearances" class="stat">
+            <div class="name">Appearances</div>
+            <div class="value"></div>
+          </div>
+          <div id="goals" class="stat">
+            <div class="name">Goals</div>
+            <div class="value"></div>
+          </div>
+          <div id="goal_assist" class="stat">
+            <div class="name">Assists</div>
+            <div class="value"></div>
+          </div>
+          <div id="gpm" class="stat">
+            <div class="name">Goals per match</div>
+            <div class="value"></div>
+          </div>
+          <div id="ppm" class="stat">
+            <div class="name">Passes per minute</div>
+            <div class="value"></div>
+          </div>
+        </div>        
+      </section>
+    </section>
+  </div>
+<script type="text/javascript" src="main.ef8a2268d76da51d1333.js?33014b8d1a2cf75b43eb"></script></body>
+</html>
