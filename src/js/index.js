@@ -6,16 +6,15 @@ const data = require('../data/player-stats.json');
 // Dynamically build players dropdown
 const selection = document.getElementById("playerID");
 
-data.players.map(player => {
+selection[0] = new Option(`Select player...`, '');
+
+data.players.map((player,key) => {
   let playerID = player.player.id;
   let playerFirstname = player.player.name.first;
   let playerLastname = player.player.name.last;
-  let option = document.createElement("option");
 
-  // Build dropdown with options of players and player id as the id
-  option.textContent = `${playerFirstname} ${playerLastname}`;
-  option.value = playerID;
-  selection.appendChild(option);
+  selection[++key] = new Option(`${playerFirstname} ${playerLastname}`, playerID);
+
 })
 
 // Get player data from id
@@ -47,7 +46,7 @@ const getPlayer = (id = 4916) => {
 
   // A private function / keep within it's lexical environment
   // Display player info and stats
-  function printPlayer() {    
+  function printPlayer() {
     const elementImage = document.getElementById('player__img');
     const elementBadge = document.getElementById('player__badge');
     const elementName = document.getElementById('player__name');
@@ -99,7 +98,7 @@ const getPlayer = (id = 4916) => {
     elementPPM.getElementsByClassName('value')[0].innerHTML = passesPerMinute(ppm);
   }
 
-  return printPlayer();  
+  return printPlayer();
 }
 
 // Load default player
